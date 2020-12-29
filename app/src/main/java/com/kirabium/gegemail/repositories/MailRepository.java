@@ -11,7 +11,7 @@ import java.util.List;
 public class MailRepository {
     private static final MailApiService service = DI.getMailApiService();
 
-    public List<Mail> getMails(){
+    public ArrayList<Mail> getMails(){
         return service.getMails();
     }
 
@@ -24,9 +24,3 @@ public class MailRepository {
     }
 
 }
-        git init
-        git add .
-        git commit -m "first commit"
-        git branch -M main
-        git remote add origin https://github.com/Kirabium/openclassrooms_mvvvm_webinar.git
-        git push -u origin main

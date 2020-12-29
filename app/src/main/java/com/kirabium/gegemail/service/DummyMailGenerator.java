@@ -22,7 +22,7 @@ abstract class DummyMailGenerator {
             new Mail("Webinar", "nouveau webinar demain soir à 19h", "Openclassrooms"),
             new Mail("Raclette", "raclette demain soir à 20h", "hugue@gegemail.com"));
 
-    static List<Mail> generateMails() {
+    static ArrayList<Mail> generateMails() {
         return new ArrayList<>(DUMMY_MAILS);
     }
 }

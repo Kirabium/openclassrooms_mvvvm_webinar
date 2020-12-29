@@ -1,7 +1,6 @@
 package com.kirabium.gegemail;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +11,7 @@ import com.kirabium.gegemail.model.Mail;
 import com.kirabium.gegemail.service.MailApiService;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -23,7 +23,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final MailApiService service = DI.getMailApiService();
+    MailViewModel mailViewModel;
 
     private void initUI() {
         setContentView(R.layout.activity_main);
@@ -31,10 +31,15 @@ public class MainActivity extends AppCompatActivity {
         setButton();
     }
 
+    private void initViewModel(){
+        mailViewModel = new ViewModelProvider(this).get(MailViewModel.class);
+        mailViewModel.fetchMails();
+    }
+
     private void setButton(){
         FloatingActionButton floatingActionButton = findViewById(R.id.button);
         floatingActionButton.setOnClickListener(view -> {
-            EventBus.getDefault().post(new AddMailEvent(new Mail("Webinar", "nouveau webinar demain soir à 19h", "Openclassrooms")));
+            mailViewModel.addMail(new Mail("Webinar", "nouveau webinar demain soir à 19h", "Openclassrooms"));
         });
     }
 
@@ -53,8 +58,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initViewModel();
         initUI();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(DeleteMailEvent event) {
+        mailViewModel.deleteMail(event.mail);
+    };
 
 }
