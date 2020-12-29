@@ -4,28 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kirabium.gegemail.MailViewModel;
+import com.kirabium.gegemail.viewmodel.MailViewModel;
 import com.kirabium.gegemail.R;
-import com.kirabium.gegemail.di.DI;
-import com.kirabium.gegemail.events.AddMailEvent;
-import com.kirabium.gegemail.events.DeleteMailEvent;
 import com.kirabium.gegemail.model.Mail;
-import com.kirabium.gegemail.service.MailApiService;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 

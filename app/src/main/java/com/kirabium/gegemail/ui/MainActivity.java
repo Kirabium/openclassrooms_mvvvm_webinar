@@ -1,14 +1,13 @@
-package com.kirabium.gegemail;
+package com.kirabium.gegemail.ui;
 
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.kirabium.gegemail.di.DI;
-import com.kirabium.gegemail.events.AddMailEvent;
+import com.kirabium.gegemail.R;
 import com.kirabium.gegemail.events.DeleteMailEvent;
 import com.kirabium.gegemail.model.Mail;
-import com.kirabium.gegemail.service.MailApiService;
+import com.kirabium.gegemail.viewmodel.MailViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;

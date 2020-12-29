@@ -1,4 +1,4 @@
-package com.kirabium.gegemail;
+package com.kirabium.gegemail.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
