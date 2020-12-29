@@ -23,8 +23,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final MailApiService service = DI.getMailApiService();
-
     private void initUI() {
         setContentView(R.layout.activity_main);
         initBottomNavigationView();
